@@ -899,12 +899,12 @@ impl fmt::Display for Address {
             Network::Testnet | Network::Signet | Network::Regtest => SCRIPT_ADDRESS_PREFIX_TEST,
         };
         let bech32_hrp = match self.network {
-            Network::Bitcoin => "ltc",
-            Network::Testnet | Network::Signet => "tltc",
-            Network::Regtest => "rltc",
+            Network::Bitcoin => "fec",
+            Network::Testnet | Network::Signet => "tfec",
+            Network::Regtest => "rfec",
         };
         let mweb_hrp = match self.network {
-            Network::Bitcoin | Network::Testnet | Network::Signet | Network::Regtest => "ltcmweb",
+            Network::Bitcoin | Network::Testnet | Network::Signet | Network::Regtest => "fecmweb",
         };
         let encoding = AddressEncoding {
             payload: &self.payload,
@@ -947,9 +947,9 @@ impl FromStr for Address {
         // try bech32
         let bech32_network = match find_bech32_prefix(s) {
             // note that upper or lowercase is allowed but NOT mixed case
-            "bc" | "BC" | "ltc" | "LTC" => Some(Network::Bitcoin),
-            "tb" | "TB" | "tltc" | "TLTC" => Some(Network::Testnet), // this may also be signet
-            "bcrt" | "BCRT" | "rltc" | "RLTC" => Some(Network::Regtest),
+            "bc" | "BC" | "fec" | "FEC" => Some(Network::Bitcoin),
+            "tb" | "TB" | "tfec" | "TFEC" => Some(Network::Testnet), // this may also be signet
+            "bcrt" | "BCRT" | "rfec" | "RFEC" => Some(Network::Regtest),
             _ => None,
         };
         if let Some(network) = bech32_network {

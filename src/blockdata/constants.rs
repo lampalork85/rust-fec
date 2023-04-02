@@ -64,7 +64,7 @@ pub fn max_target(_: Network) -> Uint256 {
 /// since keeping everything below this value should prevent overflows
 /// if you are doing anything remotely sane with monetary values).
 pub fn max_money(_: Network) -> u64 {
-    84_000_000 * COIN_VALUE
+    61_000_000 * COIN_VALUE
 }
 
 /// Constructs and returns the coinbase (and only) transaction of the Bitcoin genesis block
